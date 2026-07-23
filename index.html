@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Responsive Startup — Responsive Text & Buttons</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #FFFFFF;
+      font-family: 'Times New Roman', Times, serif;
+      color: #111827;
+      line-height: 1.45;
+    }
+
+    .startup-grid {
+      display: flex;
+      min-height: 100vh;
+      max-width: 1440px;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    /* ستون تصویر */
+    .image-col {
+      flex: 1.1;
+      min-height: 100vh;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #ffffff;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    .custom-image {
+      max-width: 100%;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ستون محتوا */
+    .right-content {
+      flex: 0.9;
+      padding: 4rem 3rem 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #FFFFFF;
+    }
+
+    /* ============================================ */
+    /*   ریسپانسیو کامل برای متن و دکمه‌ها           */
+    /* ============================================ */
+
+    /* عنوان اصلی - کاملاً responsive با clamp */
+    .main-title {
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      font-family: 'Times New Roman', Times, serif;
+      color: #0B1120;
+      margin-bottom: 1.2rem;
+      max-width: 550px;
+      
+      /* استفاده از clamp برای سایز پویا بین موبایل تا دسکتاپ */
+      font-size: clamp(1.75rem, 6vw, 3.2rem);
+    }
+
+    /* متن توضیحات - کاملاً ریسپانسیو */
+    .description-text {
+      line-height: 1.5;
+      font-family: 'Times New Roman', Times, serif;
+      color: #475569;
+      max-width: 500px;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      
+      /* اندازه متن با viewport تغییر می‌کند */
+      font-size: clamp(0.85rem, 3vw, 1.05rem);
+    }
+
+    /* دکمه Learn More - ریسپانسیو کامل */
+    .btn-learn-more {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #252525;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 5px;
+      font-weight: 600;
+      font-family: 'Times New Roman', Times, serif;
+      color: #e5ebeb;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 2.5rem;
+      width: fit-content;
+      white-space: nowrap;
+      
+      /* پدینگ و فونت ریسپانسیو */
+      padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1.2rem, 3vw, 1.9rem);
+      font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    }
+
+    .btn-learn-more:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
+      color: #1E293B;
+    }
+
+    /* خط جداکننده - ریسپانسیو */
+    .divider-light {
+      width: 100%;
+      height: 1px;
+      background: #E9EDF2;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    /* بخش ثبت‌نام (اگر اضافه شود) */
+    .signup-section {
+      max-width: 450px;
+    }
+
+    .signup-text {
+      font-size: clamp(0.9rem, 2.8vw, 1rem);
+      font-weight: 600;
+      font-family: 'Times New Roman', Times, serif;
+      color: #0F172A;
+      margin-bottom: 1.3rem;
+    }
+
+    /* گروه دکمه‌ها - کاملاً ریسپانسیو */
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-signup {
+      background: #0F172A;
+      color: white;
+      border: none;
+      border-radius: 200px;
+      font-weight: 600;
+      font-family: 'Times New Roman', Times, serif;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      
+      padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1.2rem, 2.5vw, 1.8rem);
+      font-size: clamp(0.8rem, 2.3vw, 0.95rem);
+    }
+
+    .btn-signup:hover {
+      background: #1E293B;
+    }
+
+    .btn-continue {
+      background: transparent;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 200px;
+      font-weight: 600;
+      font-family: 'Times New Roman', Times, serif;
+      color: #1E293B;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: #FFFFFF;
+      
+      padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1.2rem, 2.5vw, 1.8rem);
+      font-size: clamp(0.8rem, 2.3vw, 0.95rem);
+    }
+
+    .btn-continue:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
+    }
+
+    /* ============================================ */
+    /*    ریسپانسیو برای چیدمان کلی و ستون‌ها       */
+    /* ============================================ */
+
+    /* تبلت */
+    @media (max-width: 1024px) {
+      .startup-grid {
+        flex-direction: column;
+      }
+      .image-col {
+        min-height: 400px;
+        border-right: none;
+        border-bottom: 1px solid #E9EEF2;
+        padding: 1.5rem;
+      }
+      .custom-image {
+        max-height: 60vh;
+      }
+      .right-content {
+        padding: 2.5rem 2rem;
+      }
+      .main-title {
+        max-width: 100%;
+      }
+      .description-text {
+        max-width: 100%;
+      }
+      .btn-learn-more {
+        white-space: nowrap;
+      }
+      .divider-light {
+        max-width: 100%;
+      }
+    }
+
+    /* موبایل */
+    @media (max-width: 768px) {
+      .image-col {
+        min-height: 280px;
+        padding: 1rem;
+      }
+      .custom-image {
+        max-height: 45vh;
+        border-radius: 8px;
+      }
+      .right-content {
+        padding: 1.8rem 1.5rem;
+      }
+      
+      /* در موبایل دکمه Learn More به عرض کامل */
+      .btn-learn-more {
+        width: 30%;
+        white-space: normal;
+        text-align: center;
+        align-self: center;
+
+      }
+      
+      .divider-light {
+        margin-bottom: 1.5rem;
+      }
+      
+      /* گروه دکمه‌ها در موبایل به ستون تبدیل شوند */
+      .button-group {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+      
+      .btn-signup, .btn-continue {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* موبایل بسیار کوچک */
+    @media (max-width: 480px) {
+      .image-col {
+        min-height: 220px;
+        padding: 0.75rem;
+      }
+      .right-content {
+        padding: 1.2rem 1rem;
+      }
+      .btn-learn-more {
+        margin-bottom: 1.5rem;
+        padding: 0.5rem 1rem;
+      }
+      .divider-light {
+        margin-bottom: 1rem;
+      }
+    }
+
+    /* حالت افقی موبایل */
+    @media (max-width: 900px) and (orientation: landscape) {
+      .startup-grid {
+        flex-direction: row;
+      }
+      .image-col {
+        min-height: 100vh;
+        padding: 1rem;
+      }
+      .custom-image {
+        max-height: 85vh;
+      }
+      .right-content {
+        padding: 1.5rem;
+        justify-content: center;
+      }
+      .main-title {
+        font-size: clamp(1.4rem, 4vw, 2rem);
+      }
+      .description-text {
+        font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+        margin-bottom: 1rem;
+      }
+      .btn-learn-more {
+        margin-bottom: 1.2rem;
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+      }
+      .button-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .btn-signup, .btn-continue {
+        width: auto;
+        min-width: 120px;
+      }
+    }
+
+    /* نمایشگرهای خیلی بزرگ */
+    @media (min-width: 1440px) {
+      .startup-grid {
+        max-width: 1440px;
+      }
+      .right-content {
+        padding: 5rem 4rem;
+      }
+      .main-title {
+        font-size: 3.5rem;
+      }
+      .description-text {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* دسترسی‌پذیری */
+    button:focus-visible {
+      outline: 2px solid #0F172A;
+      outline-offset: 2px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="startup-grid">
+    <div class="image-col">
+      <img class="custom-image" src="./-2147483648_-210179.jpg" alt="User Image">
+    </div>
+
+    <div class="right-content">
+      <!-- عنوان با سایز کاملاً واکنش‌گرا (clamp) -->
+      <h1 class="main-title">Lorem ipsum dolor sit amet consectetur</h1>
+
+      <!-- متن توضیحات با سایز واکنش‌گرا -->
+      <p class="description-text">
+        Lorem ipsum, dolor sit amet consectetur adipiscing elit. Fusce euismod nibh quis, eget aliquam odio sem sed arcu enim. Vivamus volutpat culpa necismod, dictumst felis.
+      </p>
+
+      <!-- دکمه با پدینگ و فونت واکنش‌گرا -->
+      <button class="btn-learn-more">Learn More</button>
+
+      <div class="divider-light"></div>
+      
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
